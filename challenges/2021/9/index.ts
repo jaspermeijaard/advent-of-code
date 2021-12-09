@@ -27,8 +27,7 @@ const findLowestUnits = () =>
   [...units.entries()].filter(([_, unit]) =>
     moves
       .map(([x, y]) => units.get(`${unit.x + x}-${unit.y + y}`))
-      .filter((n) => n)
-      .map<Unit>((n) => n!)
+      .filter((n): n is Unit => !!n)
       .every((adj) => adj.value > unit.value),
   )
 
@@ -36,12 +35,12 @@ const findBasinUnits = (map: UnitMap): UnitMap => {
   const newAdjecents = [...map.entries()]
     .map(([_, find]) =>
       moves
-        .map<[string, Unit | undefined]>(([x, y]) => {
+        .map(([x, y]) => {
           const pos = `${find.x + x}-${find.y + y}`
           return [pos, units.get(pos)]
         })
-        .filter(([p, u]) => u && u.value > find.value && u.value < 9 && !map.has(p))
-        .map((entry) => entry as [string, Unit]),
+        .filter((entry): entry is [string, Unit] => !!entry[1])
+        .filter(([p, u]) => u && u.value > find.value && u.value < 9 && !map.has(p)),
     )
     .reduce((flat, adjecents) => flat.concat(adjecents), [])
 
