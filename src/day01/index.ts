@@ -1,15 +1,17 @@
 import run from "aocrunner"
-import { sort, takeRight, map } from "fp-ts/lib/Array.js"
+import Arr from "fp-ts/lib/Array.js"
+import Num from "fp-ts/lib/number.js"
 import { flow } from "fp-ts/lib/function.js"
-import { Ord } from "fp-ts/lib/number.js"
-import { max, sum } from "../utils/math.js"
-import { splitLines, splitParagraphs, toNumber } from "../utils/parse.js"
+import { Math, Parse } from "../utils/index.js"
 
-const parse = flow(splitParagraphs, map(flow(splitLines, map(toNumber), sum)))
+const parseInput = flow(
+  Parse.splitParagraphs,
+  Arr.map(flow(Parse.splitLines, Arr.map(Parse.toNumber), Math.sum)),
+)
 
-const part1 = flow(parse, max)
+const part1 = flow(parseInput, Math.max)
 
-const part2 = flow(parse, sort(Ord), takeRight(3), sum)
+const part2 = flow(parseInput, Arr.sort(Num.Ord), Arr.takeRight(3), Math.sum)
 
 run({
   part1: { solution: part1 },

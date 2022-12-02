@@ -29,3 +29,8 @@
  *     import { myUtil } from '../utils'
  *
  */
+
+import * as Math from "./math.js"
+import * as Parse from "./parse.js"
+
+export { Math, Parse }
