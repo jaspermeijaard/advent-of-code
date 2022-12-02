@@ -17,15 +17,15 @@ const mapLettersToRound = ([opp, me]: string[]): [Move, Move] => [
   mapLetterToMove(me),
 ]
 
-const getRoundScore = ([oppMove, meMove]: [Move, Move]) => {
-  const moveScore = meMove === "rock" ? 1 : meMove === "paper" ? 2 : 3
+const getRoundScore = ([opp, me]: [Move, Move]) => {
+  const moveScore = me === "rock" ? 1 : me === "paper" ? 2 : 3
   if (
-    (oppMove === "scissors" && meMove === "rock") ||
-    (oppMove === "paper" && meMove === "scissors") ||
-    (oppMove === "rock" && meMove === "paper")
+    (opp === "scissors" && me === "rock") ||
+    (opp === "paper" && me === "scissors") ||
+    (opp === "rock" && me === "paper")
   ) {
     return moveScore + 6
-  } else if (oppMove === meMove) {
+  } else if (opp === me) {
     return moveScore + 3
   } else {
     return moveScore
