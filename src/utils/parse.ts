@@ -6,7 +6,6 @@ export const split =
     string.split(pattern)
 
 export const splitParagraphs = split("\n\n")
-
 export const splitLines = split("\n")
-
 export const splitSpace = split(" ")
+export const splitChars = split("")
