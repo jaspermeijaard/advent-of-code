@@ -7,8 +7,10 @@ import { splitChars } from "../utils/parse.js"
 const getPriority = (char: string): number =>
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(char) + 1
 
-const findSharedChar = (left: string[], ...rights: string[][]) =>
-  left.find((char) => rights.every((r) => r.includes(char)))!
+const findSharedChar = (strings: string[][]) => {
+  const [left, ...rights] = strings
+  return left.find((char) => rights.every((r) => r.includes(char)))!
+}
 
 const part1 = flow(
   Parse.splitLines,
@@ -16,7 +18,7 @@ const part1 = flow(
     flow(
       Parse.splitChars,
       (chars) => Arr.splitAt(chars.length / 2)(chars),
-      ([l, r]) => findSharedChar(l, r),
+      findSharedChar,
       getPriority,
     ),
   ),
@@ -27,9 +29,7 @@ const part2 = flow(
   Parse.splitLines,
   Arr.map(splitChars),
   Arr.chunksOf(3),
-  Arr.map(
-    flow(([left, ...rights]) => findSharedChar(left, ...rights), getPriority),
-  ),
+  Arr.map(flow(findSharedChar, getPriority)),
   Math.sum,
 )
 
