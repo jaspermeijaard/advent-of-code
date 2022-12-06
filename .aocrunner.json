@@ -73,27 +73,27 @@
         "attempts": [
           "FTCGCWPH"
         ],
-        "time": 0.878008
+        "time": 0.974833
       },
       "part2": {
         "solved": true,
         "result": "CVCWCRTVQ",
         "attempts": [],
-        "time": 0.662742
+        "time": 0.668656
       }
     },
     {
       "part1": {
-        "solved": false,
-        "result": null,
+        "solved": true,
+        "result": "1134",
         "attempts": [],
-        "time": null
+        "time": 6.112657
       },
       "part2": {
-        "solved": false,
-        "result": null,
+        "solved": true,
+        "result": "2263",
         "attempts": [],
-        "time": null
+        "time": 3.341709
       }
     },
     {
