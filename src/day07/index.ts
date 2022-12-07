@@ -88,12 +88,8 @@ const part1 = flow(
 
 const part2 = flow(
   parseInputToFS,
-  (fs) => ({
-    files: [fs],
-    needMoreSize: 30000000 - (fs.totalSize - fs.size),
-  }),
-  ({ files, needMoreSize }) =>
-    searchFiles((f) => f.type === "dir" && f.size > needMoreSize)(files),
+  (fs) =>
+    searchFiles((f) => f.size > 30000000 - (fs.totalSize - fs.size))([fs]),
   (dirs) => dirs.sort((a, b) => b.size - a.size),
   (dirs) => dirs.pop()!,
   (dir) => dir.size,
