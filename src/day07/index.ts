@@ -1,6 +1,6 @@
 import run from "aocrunner"
 import Arr from "fp-ts/lib/Array.js"
-import { flow, pipe } from "fp-ts/lib/function.js"
+import { flow } from "fp-ts/lib/function.js"
 import { Parse, Math } from "../utils/index.js"
 
 type File = {
@@ -11,18 +11,20 @@ type File = {
 }
 
 type FS = File & {
-  pointer: string
-  totalSize: number
+  pointer: number[]
 }
 
-const getFileSize = (file: File) => Math.sum(file.files.map((c) => c.size))
+const getFileSize = (f: File) => Math.sum(f.files.map((c) => c.size))
+
+const getCwd = (f: File, pointer: number[]): File =>
+  pointer.length === 0 ? f : getCwd(f.files[pointer[0]], pointer.slice(1))
 
 const parseInputToFS: (rawInput: string) => FS = flow(
   Parse.splitLines,
   (lines) =>
     lines.reduce<FS>(
       (fs, cmd) => {
-        const cwd = eval(fs.pointer) as File // #yolo
+        const cwd = getCwd(fs, fs.pointer)
 
         if (cmd.startsWith("dir ")) {
           // add dir to cwd
@@ -43,27 +45,23 @@ const parseInputToFS: (rawInput: string) => FS = flow(
           })
         } else if (cmd.includes("$ cd ..")) {
           // move cwd to parent
-          fs.pointer = fs.pointer.split(".").slice(0, -1).join(".")
+          fs.pointer.pop()
         } else if (cmd.match(/\$ cd [^.\/]/)) {
           // move cwd to file
           const name = cmd.split(" ")[2]
-          const index = cwd.files.findIndex((f) => f.name === name)
-          fs.pointer = `${fs.pointer}.files[${index}]`
+          fs.pointer.push(cwd.files.findIndex((f) => f.name === name))
         }
 
         cwd.size = getFileSize(cwd)
-        return {
-          ...fs,
-          size: getFileSize(fs),
-        }
+        fs.size = getFileSize(fs)
+        return fs
       },
       {
-        pointer: "fs",
+        pointer: [],
         type: "dir",
         size: 0,
         name: "/",
         files: [],
-        totalSize: 70000000,
       },
     ),
 )
@@ -87,8 +85,7 @@ const part1 = flow(
 
 const part2 = flow(
   parseInputToFS,
-  (fs) =>
-    searchFiles((f) => f.size > 30000000 - (fs.totalSize - fs.size))([fs]),
+  (fs) => searchFiles((f) => f.size > 30000000 - (70000000 - fs.size))([fs]),
   (dirs) => dirs.sort((a, b) => b.size - a.size),
   (dirs) => dirs.pop()!,
   (dir) => dir.size,
