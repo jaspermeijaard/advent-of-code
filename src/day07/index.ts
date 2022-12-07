@@ -52,7 +52,10 @@ const parseInputToFS: (rawInput: string) => FS = flow(
         }
 
         cwd.size = getFileSize(cwd)
-        return { ...fs }
+        return {
+          ...fs,
+          size: getFileSize(fs),
+        }
       },
       {
         pointer: "fs",
@@ -63,10 +66,6 @@ const parseInputToFS: (rawInput: string) => FS = flow(
         totalSize: 70000000,
       },
     ),
-  (fs) => ({
-    ...fs,
-    size: getFileSize(fs),
-  }),
 )
 
 const searchFiles =
