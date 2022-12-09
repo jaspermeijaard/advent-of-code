@@ -7,3 +7,5 @@ export const multiply = (numbers: number[]) =>
   numbers.reduce((total, value) => (total = total * value), numbers.pop()!)
 
 export const pow = Math.pow
+
+export const abs = Math.abs
