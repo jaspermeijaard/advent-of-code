@@ -42,7 +42,7 @@ const runCommands = (commands: Command[]) =>
           program.crt.push(createSprite())
         }
 
-        const offset = sum(program.crt.map((crt) => crt.length)) - 40
+        const offset = (program.crt.length - 1) * 40
         const pointer = program.history.length - offset
         program.crt[program.crt.length - 1][pointer] = program.sprite[pointer]
 
