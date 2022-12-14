@@ -10,6 +10,7 @@ type Monkey = {
   operation: (old: number) => number
   to: (old: number) => number
   inspected: number
+  divisor: number
 }
 
 const parseInput = flow(
@@ -23,12 +24,13 @@ const parseInput = flow(
         const values = [old, val === "old" ? old : toNumber(val)]
         return op === "+" ? sum(values) : multiply(values)
       }
+      const divisor = toNumber(lines[2].match(/\d+/g)![0])
       const to = (old: number) =>
-        old % toNumber(lines[2].match(/\d+/g)![0]) === 0
+        old % divisor === 0
           ? toNumber(lines[3].match(/\d+/g)![0])
           : toNumber(lines[4].match(/\d+/g)![0])
 
-      return { items, operation, to, inspected: 0 }
+      return { items, operation, to, inspected: 0, divisor }
     }),
   ),
 )
@@ -36,11 +38,12 @@ const parseInput = flow(
 const runRounds =
   (rounds: number, alter: (level: number) => number) =>
   (monkeys: Monkey[]): Monkey[] => {
+    const denominator = monkeys.map((m) => m.divisor).reduce((a, b) => a * b)
     for (let round = 0; round < rounds; round++) {
       for (let m = 0; m < monkeys.length; m++) {
         const monkey = monkeys[m]
         monkey.items.forEach((item) => {
-          const level = alter(monkey.operation(item))
+          const level = alter(monkey.operation(item)) % denominator
           monkeys[monkey.to(level)].items.push(level)
         })
         monkey.inspected += monkey.items.length
@@ -61,7 +64,7 @@ const part1 = flow(
 
 const part2 = flow(
   parseInput,
-  runRounds(10000, (n) => n),
+  runRounds(10000, (lvl) => lvl),
   A.map((m) => m.inspected),
   A.sort(N.Ord),
   A.takeRight(2),
@@ -69,43 +72,7 @@ const part2 = flow(
 )
 
 run({
-  onlyTests: true,
+  onlyTests: false,
   part1: { solution: part1 },
-  part2: {
-    solution: part2,
-    tests: [
-      {
-        expected: 0,
-        input: `
-          Monkey 0:
-            Starting items: 79, 98
-            Operation: new = old * 19
-            Test: divisible by 23
-              If true: throw to monkey 2
-              If false: throw to monkey 3
-          
-          Monkey 1:
-            Starting items: 54, 65, 75, 74
-            Operation: new = old + 6
-            Test: divisible by 19
-              If true: throw to monkey 2
-              If false: throw to monkey 0
-          
-          Monkey 2:
-            Starting items: 79, 60, 97
-            Operation: new = old * old
-            Test: divisible by 13
-              If true: throw to monkey 1
-              If false: throw to monkey 3
-          
-          Monkey 3:
-            Starting items: 74
-            Operation: new = old + 3
-            Test: divisible by 17
-              If true: throw to monkey 0
-              If false: throw to monkey 1
-            `,
-      },
-    ],
-  },
+  part2: { solution: part2 },
 })
