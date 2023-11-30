@@ -30,7 +30,5 @@
  *
  */
 
-import * as Math from "./math.js"
-import * as Parse from "./parse.js"
-
-export { Math, Parse }
+export * as Math from "./math.js"
+export * as String from "./string.js"

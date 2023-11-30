@@ -1,12 +1,13 @@
 {
-  "name": "aoc2022",
+  "name": "advent-of-code",
   "version": "1.0.0",
-  "description": "Advent of Code 2022 - solutions",
+  "description": "Advent of Code 2023 - solutions",
   "type": "module",
   "scripts": {
     "start": "aocrunner day",
     "build": "aocrunner build",
-    "format": "prettier -w src"
+    "format": "prettier -w src",
+    "update:readme": "aocrunner update:readme"
   },
   "keywords": [
     "aoc"
@@ -14,16 +15,15 @@
   "author": "Jasper Meijaard",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^16.11.6",
-    "aocrunner": "^1.6.1",
-    "fp-ts": "^2.13.1",
-    "prettier": "^2.4.1"
+    "@types/node": "^20.10.1",
+    "aocrunner": "^1.9.6",
+    "prettier": "^2.8.0"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.191",
-    "lodash": "^4.17.21"
+    "fp-ts": "^2.16.1",
+    "typescript": "^5.3.2"
   },
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=20"
   }
 }

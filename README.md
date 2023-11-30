@@ -1,27 +1,27 @@
 <!-- Entries between SOLUTIONS and RESULTS tags are auto-generated -->
 
-[![AoC](https://badgen.net/badge/AoC/2022/blue)](https://adventofcode.com/2022)
+[![AoC](https://badgen.net/badge/AoC/2023/blue)](https://adventofcode.com/2023)
 [![Node](https://badgen.net/badge/Node/v16.13.0+/blue)](https://nodejs.org/en/download/)
 ![Language](https://badgen.net/badge/Language/TypeScript/blue)
 [![Template](https://badgen.net/badge/Template/aocrunner/blue)](https://github.com/caderek/aocrunner)
 
-# 🎄 Advent of Code 2022 🎄
+# 🎄 Advent of Code 2023 🎄
 
 ## Solutions
 
 <!--SOLUTIONS-->
 
-[![Day](https://badgen.net/badge/01/%E2%98%85%E2%98%85/green)](src/day01)
-[![Day](https://badgen.net/badge/02/%E2%98%85%E2%98%85/green)](src/day02)
-[![Day](https://badgen.net/badge/03/%E2%98%85%E2%98%85/green)](src/day03)
-[![Day](https://badgen.net/badge/04/%E2%98%85%E2%98%85/green)](src/day04)
-[![Day](https://badgen.net/badge/05/%E2%98%85%E2%98%85/green)](src/day05)
-[![Day](https://badgen.net/badge/06/%E2%98%85%E2%98%85/green)](src/day06)
-[![Day](https://badgen.net/badge/07/%E2%98%85%E2%98%85/green)](src/day07)
-[![Day](https://badgen.net/badge/08/%E2%98%85%E2%98%85/green)](src/day08)
+![Day](https://badgen.net/badge/01/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/02/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/03/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/04/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/05/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/06/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/07/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/08/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/09/%E2%98%86%E2%98%86/gray)
-[![Day](https://badgen.net/badge/10/%E2%98%85%E2%98%86/yellow)](src/day10)
-[![Day](https://badgen.net/badge/11/%E2%98%85%E2%98%85/green)](src/day11)
+![Day](https://badgen.net/badge/10/%E2%98%86%E2%98%86/gray)
+![Day](https://badgen.net/badge/11/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/12/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/13/%E2%98%86%E2%98%86/gray)
 ![Day](https://badgen.net/badge/14/%E2%98%86%E2%98%86/gray)
@@ -69,58 +69,58 @@ yarn start 1
 
 ```
 Day 01
-Time part 1: 0.561ms
-Time part 2: 0.632ms
-Both parts: 1.193283ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 02
-Time part 1: 3.021ms
-Time part 2: 3.756ms
-Both parts: 6.776143ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 03
-Time part 1: 1.436ms
-Time part 2: 0.916ms
-Both parts: 2.352299ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 04
-Time part 1: 2.996ms
-Time part 2: 3.644ms
-Both parts: 6.6396ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 05
-Time part 1: 0.975ms
-Time part 2: 0.669ms
-Both parts: 1.643489ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 06
-Time part 1: 6.503ms
-Time part 2: 2.788ms
-Both parts: 9.291297ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 07
-Time part 1: 3.357ms
-Time part 2: 3.268ms
-Both parts: 6.625064ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
 Day 08
-Time part 1: 713.196ms
-Time part 2: 292.9ms
-Both parts: 1006.0951440000001ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
@@ -132,16 +132,16 @@ Both parts: -
 
 ```
 Day 10
-Time part 1: 1.063ms
+Time part 1: -
 Time part 2: -
-Both parts: 1.062749ms
+Both parts: -
 ```
 
 ```
 Day 11
-Time part 1: 1.875ms
-Time part 2: 538.021ms
-Both parts: 539.8962670000001ms
+Time part 1: -
+Time part 2: -
+Both parts: -
 ```
 
 ```
@@ -243,8 +243,8 @@ Both parts: -
 ```
 
 ```
-Total stars: 19/50
-Total time: 1581.575ms
+Total stars: 0/50
+Total time: 0ms
 ```
 
 <!--/RESULTS-->
