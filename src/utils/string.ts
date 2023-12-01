@@ -12,3 +12,7 @@ export const splitSpaces = split(" ")
 export const splitChars = split("")
 
 export const toNumber = (number: string) => parseInt(number.toString())
+
+export const join = (strings: string[]) => strings.join("")
+
+export const reverse = (s: string) => s.split("").reverse().join("")
