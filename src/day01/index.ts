@@ -4,15 +4,15 @@ import { math, string } from "../utils/index.js"
 import { array } from "fp-ts"
 
 const words = new Map([
-  ["one", 1],
-  ["two", 2],
-  ["three", 3],
-  ["four", 4],
-  ["five", 5],
-  ["six", 6],
-  ["seven", 7],
-  ["eight", 8],
-  ["nine", 9],
+  ["one", "1"],
+  ["two", "2"],
+  ["three", "3"],
+  ["four", "4"],
+  ["five", "5"],
+  ["six", "6"],
+  ["seven", "7"],
+  ["eight", "8"],
+  ["nine", "9"],
 ])
 
 const findFirstAndLast = (s: string) => {
@@ -25,14 +25,14 @@ const find = (s: string, patterns: string[]) => {
 
 const findFirst = (s: string) => {
   const match = find(s, Array.from(words.keys()))
-  return words.get(match)?.toString() ?? match
+  return words.get(match) ?? match
 }
 
 const findLast = (s: string) => {
   const reversed = string.reverse(s)
   const search = Array.from(words.keys()).map(string.reverse)
   const match = string.reverse(find(reversed, search))
-  return words.get(match)?.toString() ?? match
+  return words.get(match) ?? match
 }
 
 const solution = flow(
