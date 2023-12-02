@@ -3,24 +3,22 @@ import { Math, String } from "../utils/index.js"
 import { flow } from "fp-ts/lib/function.js"
 import Array from "fp-ts/lib/Array.js"
 
-type Color = "blue" | "red" | "green"
-
 type Action = {
-  round: number
   count: number
   color: Color
 }
+
+type Color = "blue" | "red" | "green"
 
 const parseLine = flow((s: string): [number, Action[]] => {
   const [left, right] = s.split(":")
   const game = String.toNumber(left.match(/\d+/)![0])
 
-  const actions = right.split(";").reduce<Action[]>((all, set, round) => {
+  const actions = right.split(";").reduce<Action[]>((all, set) => {
     const sets = set.trim().split(",")
     sets.forEach((s) => {
       const [count, color] = s.trim().split(" ")
       all.push({
-        round,
         count: String.toNumber(count),
         color: color as Color,
       })
