@@ -1,7 +1,7 @@
 import run from "aocrunner"
 import { flow } from "fp-ts/lib/function.js"
-import { math, string } from "../utils/index.js"
-import { array } from "fp-ts"
+import { Math, String } from "../utils/index.js"
+import Array from "fp-ts/lib/Array.js"
 
 const words = new Map([
   ["one", "1"],
@@ -24,21 +24,21 @@ const find = (s: string, patterns: string[]) => {
 }
 
 const findFirst = (s: string) => {
-  const match = find(s, Array.from(words.keys()))
+  const match = find(s, [...words.keys()])
   return words.get(match) ?? match
 }
 
 const findLast = (s: string) => {
-  const reversed = string.reverse(s)
-  const search = Array.from(words.keys()).map(string.reverse)
-  const match = string.reverse(find(reversed, search))
+  const reversed = String.reverse(s)
+  const search = [...words.keys()].map(String.reverse)
+  const match = String.reverse(find(reversed, search))
   return words.get(match) ?? match
 }
 
 const solution = flow(
-  string.splitLines,
-  array.map(flow(findFirstAndLast, string.join, string.toNumber)),
-  math.sum,
+  String.splitLines,
+  Array.map(flow(findFirstAndLast, String.join, String.toNumber)),
+  Math.sum,
 )
 
 run({

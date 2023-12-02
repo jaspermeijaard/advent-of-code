@@ -30,5 +30,5 @@
  *
  */
 
-export * as math from "./math.js"
-export * as string from "./string.js"
+export * as Math from "./math.js"
+export * as String from "./string.js"
