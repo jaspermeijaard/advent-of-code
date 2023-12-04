@@ -35,15 +35,15 @@ const parseEntries = flow(
   ),
 )
 
-const findLastNumber = (entries: Entry[], current: Entry) => {
-  const [x, y] = current.xys[0]
-  return entries.find(
+const findLastNumber = (entries: Entry[], current: Entry) =>
+  entries.find(
     (e) =>
       e &&
       e.type === "number" &&
-      e.xys.some(([eX, eY]) => eX === x && eY === y - 1),
+      e.xys.some(
+        ([eX, eY]) => eX === current.xys[0][0] && eY === current.xys[0][1] - 1,
+      ),
   )
-}
 
 const mergeNumbersInEntries = (initialEntries: Entry[]) => {
   const entries = [...initialEntries]
@@ -62,33 +62,45 @@ const mergeNumbersInEntries = (initialEntries: Entry[]) => {
   return entries.filter((e) => !!e)
 }
 
-const findAdjacentPartNumbers = flow((entries: Entry[], symbol?: string) =>
-  entries.filter(
-    (e, _, all) =>
-      e.type === "number" &&
-      e.xys.some(([eX, eY]) =>
-        adjacentsPositions.some(([pX, pY]) =>
-          all.some(
-            (d) =>
-              d.type === "symbol" &&
-              (symbol ? d.value === symbol : true) &&
-              d.xys[0][0] === eX + pX &&
-              d.xys[0][1] === eY + pY,
+const findAdjacentPartNumbers = (entries: Entry[]) =>
+  entries
+    .filter(
+      (e, _, all) =>
+        e.type === "number" &&
+        e.xys.some(([eX, eY]) =>
+          adjacentsPositions.some(([pX, pY]) =>
+            all.some(
+              (d) =>
+                d.type === "symbol" &&
+                d.xys[0][0] === eX + pX &&
+                d.xys[0][1] === eY + pY,
+            ),
           ),
         ),
-      ),
-  ),
-)
+    )
+    .map((e) => parseInt(e.value))
 
-const findAdjacentGearNumbers = flow((entries: Entry[]) => {
-  const partNumbers = findAdjacentPartNumbers(entries, "*")
-})
+const findAdjacentGearNumbers = (entries: Entry[]) =>
+  entries
+    .filter((e) => e.type === "symbol" && e.value === "*")
+    .map((e) =>
+      entries.filter(
+        (n) =>
+          n.type === "number" &&
+          n.xys.some(([nX, nY]) =>
+            adjacentsPositions.some(
+              ([pX, pY]) => e.xys[0][0] === nX + pX && e.xys[0][1] === nY + pY,
+            ),
+          ),
+      ),
+    )
+    .filter((e) => e.length === 2)
+    .map((e) => Math.multiply(e.map((f) => parseInt(f.value))))
 
 const part1 = flow(
   parseEntries,
   mergeNumbersInEntries,
   findAdjacentPartNumbers,
-  Array.map(({ value }) => parseInt(value)),
   Math.sum,
 )
 
@@ -96,11 +108,10 @@ const part2 = flow(
   parseEntries,
   mergeNumbersInEntries,
   findAdjacentGearNumbers,
-  () => 0,
+  Math.sum,
 )
 
 run({
-  onlyTests: true,
   part1: {
     solution: part1,
     tests: [
