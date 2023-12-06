@@ -1,16 +1,9 @@
 import run from "aocrunner"
+import { flow } from "fp-ts/lib/function.js"
 
-const parseInput = (rawInput: string) => rawInput
+const part1 = flow(() => 0)
 
-const part1 = (rawInput: string) => {
-  const input = parseInput(rawInput)
-  return
-}
-
-const part2 = (rawInput: string) => {
-  const input = parseInput(rawInput)
-  return
-}
+const part2 = flow(() => 0)
 
 run({
   part1: { solution: part1 },
