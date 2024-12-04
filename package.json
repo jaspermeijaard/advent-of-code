@@ -15,15 +15,15 @@
   "author": "Jasper Meijaard",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.10.1",
+    "@types/node": "^22.10.1",
     "aocrunner": "^1.9.6",
-    "prettier": "^2.8.0"
+    "prettier": "^3.4.2"
   },
   "dependencies": {
     "fp-ts": "^2.16.1",
     "typescript": "^5.3.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }
