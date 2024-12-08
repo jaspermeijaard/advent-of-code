@@ -1,4 +1,6 @@
 import { inspect } from "util"
 
-export const log = (vars: any) =>
-  console.log(inspect(vars, { showHidden: false, depth: null, colors: true }))
+export const log = <I>(i: I): I => {
+  console.log(inspect(i, { showHidden: false, depth: null, colors: true }))
+  return i
+}
