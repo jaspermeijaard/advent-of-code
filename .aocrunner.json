@@ -22,15 +22,15 @@
     {
       "part1": {
         "solved": true,
-        "result": "2085",
+        "result": "202",
         "attempts": [],
-        "time": 1.622296
+        "time": 2.065625
       },
       "part2": {
         "solved": true,
-        "result": "79315",
+        "result": "271",
         "attempts": [],
-        "time": 1.366649
+        "time": 3.28775
       }
     },
     {
